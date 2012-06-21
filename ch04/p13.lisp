@@ -1,0 +1,15 @@
+; Define OUR-UNION.
+(DEFUN OUR-UNION (S1 S2)
+       (COND ((NULL S1) S2)
+             (T (COND ((NOT (MEMBER (CAR S1) S2)) (CONS (CAR S1) (OUR-UNION (CDR S1) S2)))
+                      (T (OUR-UNION (CDR S1) S2))))))
+; Define OUR-INTERSECTION
+(DEFUN OUR-INTERSECTION (S1 S2)
+       (COND ((NULL S1) NIL)
+             (T (COND ((MEMBER (CAR S1) S2) (CONS (CAR S1) (OUR-INTERSECTION (CDR S1) S2)))
+                      (T (OUR-INTERSECTION (CDR S1) S2))))))
+; Define OUR-DIFFERENCE
+(DEFUN OUR-DIFFERENCE (S1 S2)
+       (COND ((NULL S1) NIL)
+             ((MEMBER (CAR S1) S2) (OUR-DIFFERENCE (CDR S1) S2))
+             (T (CONS (CAR S1) (OUR-DIFFERENCE (CDR S1) S2)))))
