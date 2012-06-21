@@ -1,0 +1,3 @@
+(DEFUN OUR-PAIRLIS (L1 L2)
+       (COND ((NULL L1) NIL)
+             (T (APPEND (LIST (LIST (CAR L1) (CAR L2))) (OUR-PAIRLIS (CDR L1) (CDR L2))))))
